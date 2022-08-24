@@ -1,7 +1,7 @@
 import os
 import argparse
 from time import time
-import logsging as logs
+import logging as logs
 import cv2
 import numpy as np
 import json
