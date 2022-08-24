@@ -66,11 +66,12 @@ NN = cv2.dnn.readNetFromDarknet(
 if args["gpu"]:
 	NN.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
 	NN.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+	cv2.cuda.setDevice(0)
 NN_layer = NN.getLayerNames()
 NN_layer = [NN_layer[i - 1] for i in NN.getUnconnectedOutLayers()]
-cv2.cuda.setDevice(0)
 allowed_exts = {'jpg', 'jpeg','png','JPG','JPEG','PNG'}
 app = Flask(__name__)
+
 @app.route("/",methods=['GET', 'POST'])
 def index():
 	if request.method == 'POST':
