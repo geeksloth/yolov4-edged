@@ -84,8 +84,6 @@ app = Flask(__name__)
 log.info("initialized [{:.4f} ms]".format(time()-tic))
 log.info("ready")
 
-log.debug(generate_password_hash("0202"))
-
 @auth.verify_password
 def verify_password(username, password):
     if username in users and check_password_hash(users.get(username), password):
